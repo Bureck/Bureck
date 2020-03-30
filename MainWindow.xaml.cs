@@ -235,7 +235,7 @@ namespace Bureck___The_Game
         }
         //important szit======================================================================================================================================================================
 
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True");
+        SqlConnection connection;
 
         hero bohater = new hero();
         hero oponent = new hero();
@@ -283,7 +283,7 @@ namespace Bureck___The_Game
         {
             InitializeComponent();
 
-            //connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True");
+            connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True");
             connection.Open();
 
             strbox.Text = bohater.Str.ToString();
@@ -1183,95 +1183,79 @@ namespace Bureck___The_Game
         //=========================================================================================ITEM SLOT CHECK=============================================================
         bool itemslot(int x)
         {
-            bool wynik = false;
+             SqlCommand command = new SqlCommand("select nazwa, cena, itemtype, bonutype, bonus, id from Przedmioty where id = " + x, connection);
+             SqlDataReader reader = command.ExecuteReader();
+
+            reader.Read();
+
+            equip.details equipDetails = new equip.details(reader.GetValue(0));
+
             if (item1.Exist == false)
             {
-                wynik = true;
                 item1.newitem(x);
                 itemicon(x, 1);
                 it1.Visibility = Visibility.Visible;
+                return true;
             }
-            else
-            {
+
                 if (item2.Exist == false)
                 {
-                    wynik = true;
                     item2.newitem(x);
                     itemicon(x, 2);
                     it2.Visibility = Visibility.Visible;
-                }
-                else
-                {
+                return true;
+            }
+
                     if (item3.Exist == false)
                     {
-                        wynik = true;
                         item3.newitem(x);
                         itemicon(x, 3);
                         it3.Visibility = Visibility.Visible;
-                    }
-                    else
-                    {
+
+                return true;
+            }
                         if (item4.Exist == false)
                         {
-                            wynik = true;
                             item4.newitem(x);
                             itemicon(x, 4);
                             it4.Visibility = Visibility.Visible;
-                        }
-                        else
-                        {
+                return true;
+            }
                             if (item5.Exist == false)
                             {
-                                wynik = true;
                                 item5.newitem(x);
                                 itemicon(x, 5);
                                 it5.Visibility = Visibility.Visible;
-                            }
-                            else
-                            {
+                    return true;
+                }
                                 if (item6.Exist == false)
                                 {
-                                    wynik = true;
                                     item6.newitem(x);
                                     itemicon(x, 6);
                                     it6.Visibility = Visibility.Visible;
-                                }
-                                else
-                                {
+                        return true;
+                    }
                                     if (item7.Exist == false)
                                     {
-                                        wynik = true;
                                         item7.newitem(x);
                                         itemicon(x, 7);
                                         it7.Visibility = Visibility.Visible;
-                                    }
-                                    else
-                                    {
+                            return true;
+                        }
                                         if (item8.Exist == false)
                                         {
-                                            wynik = true;
                                             item8.newitem(x);
                                             itemicon(x, 8);
-                                            it8.Visibility = Visibility.Visible;
-                                        }
-                                        else
-                                        {
+                                            it8.Visibility = Visibility.Visible; return true;
+                            }
                                             if (item9.Exist == false)
                                             {
-                                                wynik = true;
                                                 item9.newitem(x);
                                                 itemicon(x, 9);
                                                 it9.Visibility = Visibility.Visible;
-                                            }
-                                        }
-                                    }
+                                    return true;
                                 }
-                            }
-                        }
-                    }
-                }
-            }
-            return wynik;
+            return false;
         }
         //================================================================================ITEM ICON===========================================================================================
         void itemicon(int x, int eqplace)

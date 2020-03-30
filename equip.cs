@@ -55,7 +55,7 @@ namespace Bureck___The_Game
 
             public bool sell()
             {
-                bool wynik=true;
+                bool wynik = true;
                 if (used == false)
                 {
                     exist = false;
@@ -72,41 +72,11 @@ namespace Bureck___The_Game
                 get { return cena; }
             }
 
-            public void newitem(int x)
+            public void newitem(details details)
             {
-                SqlCommand command = new SqlCommand("select value, id from test", connection);
-                SqlDataReader reader = command.ExecuteReader();
+                this.nazwa = details.nazwa;
+                //itd
 
-                switch (x)
-                {
-                    case 0:
-                        nazwa = "miecz";
-                        exist = true;
-                        cena = 50;
-                        bonustype = 6;
-                        bonus = 5;
-                        itemtype = 0;
-                        break;
-
-                    case 1:
-                        nazwa = "kolczuga";
-                        exist = true;
-                        cena = 60;
-                        bonustype = 5;
-                        bonus = 3;
-                        itemtype = 1;
-                        break;
-
-                    case 2:
-                        nazwa = "kalosze";
-                        exist = true;
-                        cena = 40;
-                        bonustype = 5;
-                        bonus = 1;
-                        itemtype = 2;
-                        break;
-                }
-                id = x;
             }
 
             public string check()
@@ -172,8 +142,28 @@ namespace Bureck___The_Game
                 return opis;
             }
 
+            public class details
+            {
+                public string nazwa;
+                public int cena;
+                public int itemtype;
+                public int bonustype;
+                public int bonus;
+                public int id;
+
+                public details(string nazwa, int cena, int itemtype, int bonustype, int bonus, int id)
+                {
+                    this.nazwa = nazwa;
+                    this.cena = cena;
+                    this.itemtype = itemtype;
+                    this.bonustype = bonustype;
+                    this.bonus = bonus;
+                    this.id = id;
+                }
+            }
         }
 
-        
+
     }
+
 }
