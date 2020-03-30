@@ -75,8 +75,11 @@ namespace Bureck___The_Game
             public void newitem(details details)
             {
                 this.nazwa = details.nazwa;
-                //itd
-
+                this.cena = details.cena;
+                this.itemtype = details.itemtype;
+                this.bonustype = details.bonustype;
+                this.bonus = details.bonus;
+                this.id = details.id;
             }
 
             public string check()

@@ -973,33 +973,57 @@ namespace Bureck___The_Game
         private void checkshop1(object sender, MouseEventArgs e)
         {
             checkitem();
-            shopitem.newitem(0);
+
+            SqlCommand command = new SqlCommand("select nazwa, cena, itemtype, bonustype, bonus, id from Przedmioty where id = 0", connection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Read();
+            equip.details equipDetails = new equip.details(reader.GetValue(0).ToString(), Convert.ToInt32(reader.GetValue(1)), Convert.ToInt32(reader.GetValue(2)), Convert.ToInt32(reader.GetValue(3)), Convert.ToInt32(reader.GetValue(4)), Convert.ToInt32(reader.GetValue(5)));
+
+            shopitem.newitem(equipDetails);
             if (Frycu.Option == 7)
                 shopitem.Cena = 30;
             itemstats.Text = shopitem.check();
             itemstats2.Text = shopitem.check2();
             itemstats3.Text = shopitem.check3();
             itemstats4.Text = shopitem.check4();
+            reader.Close();
         }
 
         private void checkshop2(object sender, MouseEventArgs e)
         {
             checkitem();
-            shopitem.newitem(1);
+
+            SqlCommand command = new SqlCommand("select nazwa, cena, itemtype, bonustype, bonus, id from Przedmioty where id = 1", connection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Read();
+            equip.details equipDetails = new equip.details(reader.GetValue(0).ToString(), Convert.ToInt32(reader.GetValue(1)), Convert.ToInt32(reader.GetValue(2)), Convert.ToInt32(reader.GetValue(3)), Convert.ToInt32(reader.GetValue(4)), Convert.ToInt32(reader.GetValue(5)));
+
+            shopitem.newitem(equipDetails);
             itemstats.Text = shopitem.check();
             itemstats2.Text = shopitem.check2();
             itemstats3.Text = shopitem.check3();
             itemstats4.Text = shopitem.check4();
+            reader.Close();
         }
 
         private void checkshop3(object sender, MouseEventArgs e)
         {
             checkitem();
-            shopitem.newitem(2);
+
+            SqlCommand command = new SqlCommand("select nazwa, cena, itemtype, bonustype, bonus, id from Przedmioty where id = 2", connection);
+            SqlDataReader reader = command.ExecuteReader();
+
+            reader.Read();
+            equip.details equipDetails = new equip.details(reader.GetValue(0).ToString(), Convert.ToInt32(reader.GetValue(1)), Convert.ToInt32(reader.GetValue(2)), Convert.ToInt32(reader.GetValue(3)), Convert.ToInt32(reader.GetValue(4)), Convert.ToInt32(reader.GetValue(5)));
+
+            shopitem.newitem(equipDetails);
             itemstats.Text = shopitem.check();
             itemstats2.Text = shopitem.check2();
             itemstats3.Text = shopitem.check3();
             itemstats4.Text = shopitem.check4();
+            reader.Close();
         }
 
         private void stopshop(object sender, MouseEventArgs e)
@@ -1183,78 +1207,85 @@ namespace Bureck___The_Game
         //=========================================================================================ITEM SLOT CHECK=============================================================
         bool itemslot(int x)
         {
-             SqlCommand command = new SqlCommand("select nazwa, cena, itemtype, bonutype, bonus, id from Przedmioty where id = " + x, connection);
+             SqlCommand command = new SqlCommand("select nazwa, cena, itemtype, bonustype, bonus, id from Przedmioty where id = " + x, connection);
              SqlDataReader reader = command.ExecuteReader();
 
             reader.Read();
+            equip.details equipDetails = new equip.details(reader.GetValue(0).ToString(), Convert.ToInt32(reader.GetValue(1)), Convert.ToInt32(reader.GetValue(2)), Convert.ToInt32(reader.GetValue(3)), Convert.ToInt32(reader.GetValue(4)), Convert.ToInt32(reader.GetValue(5)));
 
-            equip.details equipDetails = new equip.details(reader.GetValue(0));
+            reader.Close();
 
             if (item1.Exist == false)
             {
-                item1.newitem(x);
+                item1.newitem(equipDetails);
                 itemicon(x, 1);
                 it1.Visibility = Visibility.Visible;
                 return true;
             }
 
-                if (item2.Exist == false)
-                {
-                    item2.newitem(x);
-                    itemicon(x, 2);
-                    it2.Visibility = Visibility.Visible;
-                return true;
+            if (item2.Exist == false)
+            {
+            item2.newitem(equipDetails);
+            itemicon(x, 2);
+            it2.Visibility = Visibility.Visible;
+            return true;
             }
 
-                    if (item3.Exist == false)
-                    {
-                        item3.newitem(x);
-                        itemicon(x, 3);
-                        it3.Visibility = Visibility.Visible;
+            if (item3.Exist == false)
+            {
+            item3.newitem(equipDetails);
+            itemicon(x, 3);
+            it3.Visibility = Visibility.Visible;
+            return true;
+            }
+                        
+            if (item4.Exist == false)
+            {
+            item4.newitem(equipDetails);
+            itemicon(x, 4);
+            it4.Visibility = Visibility.Visible;
+            return true;
+            }
+                            
+            if (item5.Exist == false)
+            {
+            item5.newitem(equipDetails);
+            itemicon(x, 5);
+            it5.Visibility = Visibility.Visible;
+            return true;
+            }
+                                
+            if (item6.Exist == false)
+            {
+            item6.newitem(equipDetails);
+            itemicon(x, 6);
+            it6.Visibility = Visibility.Visible;
+            return true;
+            }
+                                    
+            if (item7.Exist == false)
+            {
+            item7.newitem(equipDetails);
+            itemicon(x, 7);
+            it7.Visibility = Visibility.Visible;
+            return true;
+            }
+                                        
+            if (item8.Exist == false)
+            {
+            item8.newitem(equipDetails);
+            itemicon(x, 8);
+            it8.Visibility = Visibility.Visible; return true;
+            }
+                                            
+            if (item9.Exist == false)
+            {
+            item9.newitem(equipDetails);
+            itemicon(x, 9);
+            it9.Visibility = Visibility.Visible;
+            return true;
+            }
 
-                return true;
-            }
-                        if (item4.Exist == false)
-                        {
-                            item4.newitem(x);
-                            itemicon(x, 4);
-                            it4.Visibility = Visibility.Visible;
-                return true;
-            }
-                            if (item5.Exist == false)
-                            {
-                                item5.newitem(x);
-                                itemicon(x, 5);
-                                it5.Visibility = Visibility.Visible;
-                    return true;
-                }
-                                if (item6.Exist == false)
-                                {
-                                    item6.newitem(x);
-                                    itemicon(x, 6);
-                                    it6.Visibility = Visibility.Visible;
-                        return true;
-                    }
-                                    if (item7.Exist == false)
-                                    {
-                                        item7.newitem(x);
-                                        itemicon(x, 7);
-                                        it7.Visibility = Visibility.Visible;
-                            return true;
-                        }
-                                        if (item8.Exist == false)
-                                        {
-                                            item8.newitem(x);
-                                            itemicon(x, 8);
-                                            it8.Visibility = Visibility.Visible; return true;
-                            }
-                                            if (item9.Exist == false)
-                                            {
-                                                item9.newitem(x);
-                                                itemicon(x, 9);
-                                                it9.Visibility = Visibility.Visible;
-                                    return true;
-                                }
             return false;
         }
         //================================================================================ITEM ICON===========================================================================================
