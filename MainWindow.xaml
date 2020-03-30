@@ -1,0 +1,90 @@
+﻿<Window x:Class="Bureck___The_Game.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bureck___The_Game"
+        mc:Ignorable="d"
+        Title="Game" Width="1161" Height="675">
+    <Grid>
+        <Image x:Name="tło" HorizontalAlignment="Left" Height="649" Margin="0,0,-5,-5" VerticalAlignment="Top" Width="1197" RenderTransformOrigin="0.5,0.5" Source="tuo.png" Stretch="Uniform"/>
+        <TextBlock x:Name="zloto" HorizontalAlignment="Left" Height="67" Margin="960,384,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" FontSize="48" Foreground="White"/>
+        <Image x:Name="stats" HorizontalAlignment="Left" Height="246" Margin="872,50,0,0" VerticalAlignment="Top" Width="271" Source="stats.png" Stretch="None"/>
+        <TextBlock x:Name="strbox" HorizontalAlignment="Left" Height="35" Margin="1096,86,-13,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" Foreground="White" FontSize="24" FontWeight="Bold"/>
+        <TextBlock x:Name="mblbox" HorizontalAlignment="Left" Height="31" Margin="1096,126,-13,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" FontSize="24" FontWeight="Bold" Foreground="White"/>
+        <TextBlock x:Name="intbox" HorizontalAlignment="Left" Height="33" Margin="1096,158,-16,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" Foreground="White" FontSize="24" FontWeight="Bold"/>
+        <TextBlock x:Name="hpbox" HorizontalAlignment="Left" Height="27" Margin="1096,191,-16,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="73" Foreground="White" FontSize="24" FontWeight="Bold"/>
+        <TextBlock x:Name="armbox" HorizontalAlignment="Left" Height="34" Margin="1096,228,-14,0" Text="0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Foreground="White" FontSize="24" FontWeight="Bold"/>
+        <Image x:Name="strplus" HorizontalAlignment="Left" Height="31" Margin="849,90,0,0" VerticalAlignment="Top" Width="30" RenderTransformOrigin="0.462,0.516" Source="statplus.png" Stretch="Uniform" MouseDown="Addstr" Visibility="Collapsed"/>
+        <Image x:Name="mblplus" HorizontalAlignment="Left" Height="31" Margin="849,126,0,0" VerticalAlignment="Top" Width="30" RenderTransformOrigin="0.462,0.516" Source="statplus.png" Stretch="Uniform" MouseDown="Addmbl" Visibility="Collapsed"/>
+        <Image x:Name="intplus" HorizontalAlignment="Left" Height="31" Margin="849,160,0,0" VerticalAlignment="Top" Width="30" RenderTransformOrigin="0.462,0.516" Source="statplus.png" Stretch="Uniform" MouseDown="Addint" Visibility="Collapsed"/>
+        <TextBlock x:Name="wyswietlacz" HorizontalAlignment="Left" Margin="366,10,0,0" Text="Wyświetlacz" TextWrapping="Wrap" VerticalAlignment="Top" Height="335" Width="424" Foreground="White" FontSize="20" Visibility="Collapsed"/>
+        <TextBlock x:Name="enemyhp" HorizontalAlignment="Left" Height="65" Margin="0,564,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Width="317" Foreground="White" FontWeight="Bold" FontSize="36" RenderTransformOrigin="0.488,0.451" TextAlignment="Center" Visibility="Collapsed"/>
+        <TextBlock x:Name="walka1" HorizontalAlignment="Left" Height="45" Margin="366,374,349,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Width="438" Foreground="White" FontSize="20" MouseDown="fight1" Visibility="Collapsed"/>
+        <TextBlock x:Name="walka2" HorizontalAlignment="Left" Margin="366,432,349,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="438" Foreground="White" FontSize="20" FontWeight="Normal" MouseDown="fight2" Visibility="Collapsed"/>
+        <TextBlock x:Name="walka3" HorizontalAlignment="Left" Margin="366,493,349,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="438" Foreground="White" FontSize="20" FontWeight="Normal" MouseDown="fight3" Visibility="Collapsed"/>
+        <TextBlock x:Name="rozmowa1" HorizontalAlignment="Left" Height="45" Margin="366,374,347,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Width="440" Foreground="White" FontSize="20" MouseDown="talk1" Visibility="Collapsed"/>
+        <TextBlock x:Name="rozmowa2" HorizontalAlignment="Left" Margin="366,432,347,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="440" Foreground="White" FontSize="20" FontWeight="Normal" MouseDown="talk2" Visibility="Collapsed"/>
+        <TextBlock x:Name="rozmowa3" HorizontalAlignment="Left" Margin="366,493,347,0" Text="Żegnam." TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="440" Foreground="White" FontSize="20" FontWeight="Normal" MouseDown="talk3" Visibility="Collapsed"/>
+        <TextBlock x:Name="talkenemyname" HorizontalAlignment="Left" Margin="4,454,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="99" Width="313" Foreground="White" FontSize="36" FontWeight="Bold" RenderTransformOrigin="0.355,0.512" TextAlignment="Center" Visibility="Collapsed"/>
+        <Image x:Name="magic" HorizontalAlignment="Left" Height="612" Margin="348,0,0,0" VerticalAlignment="Top" Width="462" Source="czary.png" Stretch="UniformToFill" Visibility="Collapsed" />
+        <Image x:Name="closemagic" HorizontalAlignment="Left" Height="68" Margin="743,576,0,0" VerticalAlignment="Top" Width="67" Source="StoreLogo.png" MouseDown="zamknijmagie" Visibility="Collapsed"/>
+        <Image x:Name="dummy" HorizontalAlignment="Left" Height="433" VerticalAlignment="Top" Width="320" Source="dummy.png" Stretch="Uniform" Margin="10,0,0,0" Visibility="Collapsed"/>
+        <Image x:Name="farma" HorizontalAlignment="Left" Height="649" VerticalAlignment="Center" Width="462" Source="farma.png" Stretch="Uniform" Margin="348,0,0,-5" Visibility="Collapsed" />
+        <Image x:Name="bureckbutton" HorizontalAlignment="Left" Height="108" Margin="423,95,0,0" VerticalAlignment="Top" Width="114" Source="Bureck.png" RenderTransformOrigin="0.491,0.498" MouseDown="talkToBureck" Visibility="Collapsed"/>
+        <Image x:Name="Bureckface" HorizontalAlignment="Left" Height="421" VerticalAlignment="Top" Width="319" Source="staryja.png" Stretch="Uniform" Margin="1,1,0,0" Visibility="Collapsed" />
+        <Image x:Name="rido" HorizontalAlignment="Left" Height="649" Margin="348,0,0,-5" VerticalAlignment="Center" Width="462" Source="rido.png" Stretch="Uniform" Visibility="Collapsed"/>
+        <Image x:Name="Frycubutton" HorizontalAlignment="Left" Height="111" Margin="616,88,0,0" VerticalAlignment="Top" Width="108" Source="kowal.png" Stretch="Uniform" MouseDown="talkToFrycu" Visibility="Collapsed"/>
+        <Image x:Name="ridoFarm" HorizontalAlignment="Left" Height="78" Margin="558,184,0,0" VerticalAlignment="Top" Width="57" MouseDown="ridofarm" Source="black.png" Stretch="None" Visibility="Collapsed"/>
+        <Image x:Name="FrycuFace" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="320" Source="FrycuRyja.png" Stretch="Uniform" Visibility="Collapsed"/>
+        <Image x:Name="shop2" HorizontalAlignment="Left" Height="58" Margin="559,82,0,0" VerticalAlignment="Top" Width="57" Source="kolczuga.png" Stretch="Uniform" MouseEnter="checkshop2" MouseLeave="stopshop" MouseDown="buy2" Visibility="Collapsed"/>
+        <Image x:Name="shop3" HorizontalAlignment="Left" Height="58" Margin="676,82,0,0" VerticalAlignment="Top" Width="57" Source="kalosze.png" Stretch="Uniform" MouseEnter="checkshop3" MouseLeave="stopshop" MouseDown="buy3" Visibility="Collapsed"/>
+        <Image x:Name="shop1" HorizontalAlignment="Left" Height="58" Margin="437,82,0,0" VerticalAlignment="Top" Width="57" Source="miecz.png" Stretch="Uniform" MouseEnter="checkshop1" MouseLeave="stopshop" MouseDown="buy1" Visibility="Collapsed"/>
+        <TextBlock x:Name="itemstats" HorizontalAlignment="Left" Margin="879,59,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="67" Width="264" Foreground="White" FontSize="20" FontWeight="Normal" Visibility="Collapsed"/>
+        <TextBlock x:Name="itemstats2" HorizontalAlignment="Left" Margin="879,126,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="67" Width="264" Foreground="White" FontSize="20" FontWeight="Normal" Visibility="Collapsed"/>
+        <TextBlock x:Name="itemstats3" HorizontalAlignment="Left" Margin="879,197,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="67" Width="264" Foreground="White" FontSize="20" FontWeight="Normal" Visibility="Collapsed"/>
+        <TextBlock x:Name="itemstats4" HorizontalAlignment="Left" Margin="879,267,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="264" Foreground="White" FontSize="20" FontWeight="Normal" Visibility="Collapsed"/>
+        <Image x:Name="it1" HorizontalAlignment="Left" Height="57" Margin="924,458,0,0" VerticalAlignment="Top" Width="53" Source="item.png" Stretch="Uniform" MouseLeave="stopshop" MouseEnter="itcheck1" Visibility="Collapsed" MouseDown="equiporsell1" />
+        <Image x:Name="it2" HorizontalAlignment="Left" Height="56" Margin="978,458,0,0" VerticalAlignment="Top" Width="54" Source="item.png" Stretch="Uniform" MouseLeave="stopshop" MouseEnter="itcheck2" Visibility="Collapsed" MouseDown="equiporsell2"/>
+        <Image x:Name="it3" HorizontalAlignment="Left" Height="56" Margin="1032,458,0,0" VerticalAlignment="Top" Width="54" Source="item.png" Stretch="Uniform" MouseLeave="stopshop" MouseEnter="itcheck3" Visibility="Collapsed" MouseDown="equiporsell3"/>
+        <Image x:Name="it4" HorizontalAlignment="Left" Height="56" Margin="924,514,0,0" VerticalAlignment="Top" Width="54" Source="item.png" Stretch="Uniform" MouseLeave="stopshop" MouseEnter="itcheck4" Visibility="Collapsed" MouseDown="equiporsell4"/>
+        <Image x:Name="it5" HorizontalAlignment="Left" Height="56" Margin="978,514,0,0" VerticalAlignment="Top" Width="54" Source="item.png" Stretch="Uniform" MouseLeave="stopshop" MouseEnter="itcheck5" Visibility="Collapsed" MouseDown="equiporsell5"/>
+        <Image x:Name="it6" HorizontalAlignment="Left" Height="56" Margin="1032,514,0,0" VerticalAlignment="Top" Width="54" Source="item.png" Stretch="Uniform" MouseLeave="stopshop" MouseEnter="itcheck6" Visibility="Collapsed" MouseDown="equiporsell6"/>
+        <Image x:Name="it7" HorizontalAlignment="Left" Height="56" Margin="924,570,0,0" VerticalAlignment="Top" Width="54" Source="item.png" Stretch="Uniform" MouseLeave="stopshop" MouseEnter="itcheck7" Visibility="Collapsed" MouseDown="equiporsell7"/>
+        <Image x:Name="it8" HorizontalAlignment="Left" Height="58" Margin="978,570,0,0" VerticalAlignment="Top" Width="54" Source="item.png" Stretch="Uniform" MouseLeave="stopshop" MouseEnter="itcheck8" Visibility="Collapsed" MouseDown="equiporsell8"/>
+        <Image x:Name="it9" HorizontalAlignment="Left" Height="56" Margin="1032,570,0,0" VerticalAlignment="Top" Width="54" Source="item.png" Stretch="Uniform" MouseLeave="stopshop" MouseEnter="itcheck9" Visibility="Collapsed" MouseDown="equiporsell9"/>
+        <Image x:Name="gora" HorizontalAlignment="Left" Height="648" Margin="348,1,0,-5" VerticalAlignment="Top" Width="462" Source="góra.png" Visibility="Collapsed"/>
+        <Image x:Name="wojten_icon" HorizontalAlignment="Left" Height="279" Margin="420,95,0,0" VerticalAlignment="Top" Width="165" Source="wojtenfall icon.png" Visibility="Collapsed" MouseDown="talkToWojten"/>
+        <Image x:Name="wojtenface" HorizontalAlignment="Left" Height="418" Margin="1,1,0,0" VerticalAlignment="Top" Width="319" Source="WojtenFall.png" Visibility="Collapsed"/>
+        <Image x:Name="gorafarm" HorizontalAlignment="Left" Height="111" Margin="692,365,0,0" VerticalAlignment="Top" Width="65" Visibility="Collapsed"/>
+
+
+
+
+
+
+
+        <Image x:Name="mapicon" HorizontalAlignment="Left" Height="87" Margin="366,542,0,0" VerticalAlignment="Top" Width="86" Source="mapa.png" MouseDown="openmap" Visibility="Collapsed" />
+        <Image x:Name="mapsko" HorizontalAlignment="Left" Height="557" VerticalAlignment="Top" Width="476" Source="mapa.png" Stretch="Uniform" Margin="345,-4,0,0" StretchDirection="DownOnly" Visibility="Collapsed" />
+        <Image x:Name="mapafarma" HorizontalAlignment="Left" Height="32" Margin="630,50,0,0" VerticalAlignment="Top" Width="57" Source="mapafarma.png" Stretch="Uniform" MouseDown="goToFarma" Visibility="Collapsed" />
+        <Image x:Name="maparido" HorizontalAlignment="Left" Height="39" Margin="590,82,0,0" VerticalAlignment="Top" Width="61" Source="maparido.png" Stretch="Uniform" MouseDown="goToRido" Visibility="Collapsed" />
+        <Image x:Name="bandyta" HorizontalAlignment="Left" Height="418" Margin="0,1,0,0" VerticalAlignment="Top" Width="330" Source="bandyta.png" Visibility="Collapsed"/>
+
+
+
+
+
+
+
+
+
+
+        <Image x:Name="itemtemple" HorizontalAlignment="Left" Height="15" Margin="671,461,0,0" VerticalAlignment="Top" Width="16" Source="item.png" Visibility="Collapsed"/>
+        <Image x:Name="use0" HorizontalAlignment="Left" Height="32" Margin="616,419,0,0" VerticalAlignment="Top" Width="25" Source="mieczused.png" Visibility="Collapsed"/>
+        <Image x:Name="use1" HorizontalAlignment="Left" Height="100" Margin="494,394,0,0" VerticalAlignment="Top" Width="100" Source="kolczugaused.png" Visibility="Collapsed"/>
+        <Image x:Name="use2" HorizontalAlignment="Left" Height="100" Margin="599,432,0,0" VerticalAlignment="Top" Width="100" Source="kaloszeused.png" Visibility="Collapsed"/>
+        <Image x:Name="mapagora" HorizontalAlignment="Left" Height="38" Margin="563,27,0,0" VerticalAlignment="Top" Width="53" Source="mapagora.png" MouseDown="goToGora" Visibility="Collapsed"/>
+
+
+    </Grid>
+</Window>
