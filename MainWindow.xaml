@@ -56,7 +56,7 @@
         <Image x:Name="gora" HorizontalAlignment="Left" Height="648" Margin="348,1,0,-5" VerticalAlignment="Top" Width="462" Source="góra.png" Visibility="Collapsed"/>
         <Image x:Name="wojten_icon" HorizontalAlignment="Left" Height="279" Margin="420,95,0,0" VerticalAlignment="Top" Width="165" Source="wojtenfall icon.png" Visibility="Collapsed" MouseDown="talkToWojten"/>
         <Image x:Name="wojtenface" HorizontalAlignment="Left" Height="418" Margin="1,1,0,0" VerticalAlignment="Top" Width="319" Source="WojtenFall.png" Visibility="Collapsed"/>
-        <Image x:Name="gorafarm" HorizontalAlignment="Left" Height="111" Margin="692,365,0,0" VerticalAlignment="Top" Width="65" Visibility="Collapsed"/>
+        <Image x:Name="goraFarm" HorizontalAlignment="Left" Height="121" Margin="696,376,0,0" VerticalAlignment="Top" Width="64" MouseDown="gorafarm" Source="black.png" Visibility="Collapsed"/>
 
 
 
@@ -69,7 +69,7 @@
         <Image x:Name="mapafarma" HorizontalAlignment="Left" Height="32" Margin="630,50,0,0" VerticalAlignment="Top" Width="57" Source="mapafarma.png" Stretch="Uniform" MouseDown="goToFarma" Visibility="Collapsed" />
         <Image x:Name="maparido" HorizontalAlignment="Left" Height="39" Margin="590,82,0,0" VerticalAlignment="Top" Width="61" Source="maparido.png" Stretch="Uniform" MouseDown="goToRido" Visibility="Collapsed" />
         <Image x:Name="bandyta" HorizontalAlignment="Left" Height="418" Margin="0,1,0,0" VerticalAlignment="Top" Width="330" Source="bandyta.png" Visibility="Collapsed"/>
-
+        <Image x:Name="demongorski" HorizontalAlignment="Left" Height="418" Margin="0,1,0,0" VerticalAlignment="Top" Width="330" Source="demon.png" Visibility="Collapsed"/>
 
 
 

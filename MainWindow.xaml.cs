@@ -65,6 +65,8 @@ namespace Bureck___The_Game
         bool slot0 = false;
         bool slot1 = false;
         bool slot2 = false;
+
+        bool spells = false;
         //end of important szit
 
         public MainWindow()
@@ -220,7 +222,7 @@ namespace Bureck___The_Game
                     bohater.Xp += oponent.Xp;
                     if (bohater.Xp >= 0)
                     {
-                        pu += 2;
+                        pu += 1;
                         lvl += 1;
                         bohater.Xp -= lvl * 30;
                         bohater.Hp += lvl * 15;
@@ -307,6 +309,7 @@ namespace Bureck___The_Game
                 case 11:
                     //WątekFall część dalsza
                     Wojten.Option += 1;
+                    wyswietlacz.Text = "";
                     Wojtentalk();
                     break;
             }
@@ -389,7 +392,7 @@ namespace Bureck___The_Game
                 case 2:
                     gora.Visibility = Visibility.Visible;
                     wojten_icon.Visibility = Visibility.Visible;
-                    gorafarm.Visibility = Visibility.Visible;
+                    goraFarm.Visibility = Visibility.Visible;
                     break;
             }
         }
@@ -426,8 +429,12 @@ namespace Bureck___The_Game
                     wyswietlacz.Text = "W ciemnym zaułku spotykasz agresywnego mężczyznę mongolskiego pochodzenia.";
                     rido.Visibility = Visibility.Collapsed;
                     Frycubutton.Visibility = Visibility.Collapsed;
-                    ridoFarm.Visibility = Visibility.Collapsed;
                     bandyta.Visibility = Visibility.Visible;
+                    break;
+                case 2:
+                    gora.Visibility = Visibility.Collapsed;
+                    wojten_icon.Visibility = Visibility.Collapsed;
+                    demongorski.Visibility = Visibility.Visible;
                     break;
             }
             stan.Czynnosc = 1;
@@ -444,6 +451,11 @@ namespace Bureck___The_Game
                     bandyta.Visibility = Visibility.Collapsed;
                     if (Frycu.Option == 4)
                         Frycu.Option += 1;
+                    break;
+                case 2:
+                    demongorski.Visibility = Visibility.Collapsed;
+                    if (Wojten.Option == 7)
+                        Wojten.Option += 1;
                     break;
             }
             rozmowa1.Visibility = Visibility.Visible;
@@ -482,7 +494,7 @@ namespace Bureck___The_Game
                     wyswietlacz.Text = "Witam.";
                     break;
                 case 2:
-                    gorafarm.Visibility = Visibility.Collapsed;
+                    goraFarm.Visibility = Visibility.Collapsed;
                     wojtenface.Visibility = Visibility.Visible;
                     talkenemyname.Text = Wojten.Name;
                     gora.Visibility = Visibility.Collapsed;
@@ -680,6 +692,31 @@ namespace Bureck___The_Game
                     but1 = 11;
                     rozmowa1.Text = "Przykro mi z powodu Twojej straty";
                     break;
+                case 5:
+                    rozmowa1.Visibility = Visibility.Visible;
+                    wyswietlacz.Text = "Odnajdź dla mnie indywiduum odpowiedzialne za kradzież mojego drzewa";
+                    but1 = 11;
+                    rozmowa1.Text = "Czy aby na pewno dam radę?";
+                    break;
+                case 6:
+                    rozmowa1.Visibility = Visibility.Visible;
+                    wyswietlacz.Text = "Prawdopodobnie nie, ale mogę nauczyć cię używania magii, co zwiększy Twoje szanse. Bym jednak upewnił się, że jesteś godzien, musisz pokonać demona górskiego który ukrywa się w tej jaskini.";
+                    but1 = 11;
+                    rozmowa1.Text = "O ja cie Franku";
+                    break;
+                case 7:
+                    rozmowa1.Visibility = Visibility.Collapsed;
+                    break;
+                case 8:
+                    rozmowa1.Visibility = Visibility.Visible;
+                    wyswietlacz.Text = "Udało Ci się. Teraz, gdy osiągniesz 2, oraz 4 punkty jakiejś statystyki dostaniesz specjalną umiejętność. To jak często będziesz mógł jej używać będzie zależeć od Twojej inteligencji. A teraz idź, dokonać zemsty za moje drzewo";
+                    but1 = 11;
+                    rozmowa1.Text = "niech tak będzie";
+                    spells = true;
+                    break;
+                case 9:
+                    rozmowa1.Visibility = Visibility.Collapsed;
+                    break;
             }
         }
 
@@ -702,7 +739,7 @@ namespace Bureck___The_Game
                 case 2:
                     gora.Visibility = Visibility.Collapsed;
                     wojten_icon.Visibility = Visibility.Collapsed;
-                    gorafarm.Visibility = Visibility.Collapsed;
+                    goraFarm.Visibility = Visibility.Collapsed;
                     break;
             }
             stan.Miejsce = 0;
@@ -726,7 +763,7 @@ namespace Bureck___The_Game
                 case 2:
                     gora.Visibility = Visibility.Collapsed;
                     wojten_icon.Visibility = Visibility.Collapsed;
-                    gorafarm.Visibility = Visibility.Collapsed;
+                    goraFarm.Visibility = Visibility.Collapsed;
                     break;
             }
             stan.Miejsce = 1;
@@ -762,6 +799,12 @@ namespace Bureck___The_Game
         {
             who = 1;
             ridoFarm.Visibility = Visibility.Collapsed;
+            fightstart();
+        }
+        private void gorafarm(object sender, MouseButtonEventArgs e)
+        {
+            who = 2;
+            goraFarm.Visibility = Visibility.Collapsed;
             fightstart();
         }
         //===================================================================================CHECK I STOP ITEMS==============================================================================
@@ -1647,6 +1690,5 @@ namespace Bureck___The_Game
             }
         }
 
-        
     }
 }
