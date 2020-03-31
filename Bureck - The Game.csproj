@@ -84,12 +84,16 @@
       <DependentUpon>Database1DataSet2.xsd</DependentUpon>
     </Compile>
     <Compile Include="equip.cs" />
+    <Compile Include="hero.cs" />
+    <Compile Include="info.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Osoba.cs" />
+    <Compile Include="places.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
