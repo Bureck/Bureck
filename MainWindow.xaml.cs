@@ -67,6 +67,7 @@ namespace Bureck___The_Game
         bool slot2 = false;
 
         bool spells = false;
+        int cooldown = 0;
         //end of important szit
 
         public MainWindow()
@@ -168,11 +169,29 @@ namespace Bureck___The_Game
 
         private void fight2(object sender, MouseButtonEventArgs e)
         {
-            magic.Visibility = Visibility.Visible;
-            closemagic.Visibility = Visibility.Visible;
-            wyswietlacz.Visibility = Visibility.Collapsed;
-            walka1.Visibility = Visibility.Collapsed;
-            walka2.Visibility = Visibility.Collapsed;
+            if (cooldown <= 0)
+            {
+                magic.Visibility = Visibility.Visible;
+                closemagic.Visibility = Visibility.Visible;
+                wyswietlacz.Visibility = Visibility.Collapsed;
+                walka1.Visibility = Visibility.Collapsed;
+                walka2.Visibility = Visibility.Collapsed;
+                if (spells == true)
+                {
+                    if (bohater.Mbl >= 2)
+                        spellmbl1.Visibility = Visibility.Visible;
+                    if (bohater.Mbl >= 4)
+                        spellmbl2.Visibility = Visibility.Visible;
+                    if (bohater.Wis >= 2)
+                        spellwis1.Visibility = Visibility.Visible;
+                    if (bohater.Wis >= 4)
+                        spellwis2.Visibility = Visibility.Visible;
+                    if (bohater.Str >= 2)
+                        spellstr1.Visibility = Visibility.Visible;
+                    if (bohater.Str >= 4)
+                        spellstr2.Visibility = Visibility.Visible;
+                }
+            }
         }
 
         private void fight3(object sender, MouseButtonEventArgs e)
@@ -200,11 +219,7 @@ namespace Bureck___The_Game
 
         private void zamknijmagie(object sender, MouseButtonEventArgs e)
         {
-            magic.Visibility = Visibility.Collapsed;
-            closemagic.Visibility = Visibility.Collapsed;
-            wyswietlacz.Visibility = Visibility.Visible;
-            walka1.Visibility = Visibility.Visible;
-            walka2.Visibility = Visibility.Visible;
+            magicclear();
         }
         //================================================================================CHECK STATE TALK=======================================================================================
         void checkStateTalk(int optID)
@@ -369,6 +384,11 @@ namespace Bureck___The_Game
                 fightend();
             }
             hpbox.Text = bohater.Hp.ToString();
+            cooldown -= 1;
+            if (cooldown > 0)
+                walka2.Text = "Do ponownego użycia magii pozostało " + cooldown + " tur";
+            else
+                walka2.Text = "Atak specjalny";
         }
         //====================================================================================CHECK STATE PLACE==================================================================================
         void checkstateplace()
@@ -442,6 +462,7 @@ namespace Bureck___The_Game
 
         void fightend()
         {
+            cooldown = 0;
             switch (who)
             {
                 case 0:
@@ -1689,6 +1710,133 @@ namespace Bureck___The_Game
                     break;
             }
         }
+        //==================================================================magia=============================================================================
 
+        void magicclear()
+        {
+            magic.Visibility = Visibility.Collapsed;
+            closemagic.Visibility = Visibility.Collapsed;
+            wyswietlacz.Visibility = Visibility.Visible;
+            walka1.Visibility = Visibility.Visible;
+            walka2.Visibility = Visibility.Visible;
+
+            spellmbl1.Visibility = Visibility.Collapsed;
+            spellmbl2.Visibility = Visibility.Collapsed;
+            spellwis1.Visibility = Visibility.Collapsed;
+            spellwis2.Visibility = Visibility.Collapsed;
+            spellstr1.Visibility = Visibility.Collapsed;
+            spellstr2.Visibility = Visibility.Collapsed;
+        }
+        
+        private void mblatack(object sender, MouseButtonEventArgs e)
+        {
+            magicclear();
+            oponent.Hp -= bohater.Mbl*6;
+            komunikat = "Przeciwnik otrzymał " + bohater.Mbl * 6 + " obrażeń!";
+            cooldown = 6 - bohater.Wis;
+            checkStateFight();
+        }
+
+        private void mblheal(object sender, MouseButtonEventArgs e)
+        {
+            magicclear();
+            bohater.Hp += bohater.Mbl*3;
+            if (bohater.Hp > maxhp)
+                bohater.Hp = maxhp;
+            wyswietlacz.Text = "Wyleczono " + bohater.Mbl*3 + " punktów życia";
+            cooldown = 10 - bohater.Wis;
+        }
+
+        private void wisatack(object sender, MouseButtonEventArgs e)
+        {
+            magicclear();
+            oponent.Hp -= bohater.Wis * 6;
+            komunikat = "Przeciwnik otrzymał " + bohater.Wis * 6 + " obrażeń!";
+            cooldown = 6 - bohater.Wis;
+            checkStateFight();
+        }
+
+        private void wisheal(object sender, MouseButtonEventArgs e)
+        {
+            magicclear();
+            bohater.Hp += bohater.Wis*3;
+            if (bohater.Hp > maxhp)
+                bohater.Hp = maxhp;
+            wyswietlacz.Text = "Wyleczono " + bohater.Wis*3 + " punktów życia";
+            cooldown = 10 - bohater.Wis;
+        }
+
+        private void stratack(object sender, MouseButtonEventArgs e)
+        {
+            magicclear();
+            oponent.Hp -= bohater.Str * 6;
+            komunikat = "Przeciwnik otrzymał " + bohater.Str * 6 + " obrażeń!";
+            cooldown = 6 - bohater.Wis;
+            checkStateFight();
+        }
+
+        private void strheal(object sender, MouseButtonEventArgs e)
+        {
+            magicclear();
+            bohater.Hp += bohater.Str*3;
+            if (bohater.Hp > maxhp)
+                bohater.Hp = maxhp;
+            wyswietlacz.Text = "Wyleczono " + bohater.Str*3 + " punktów życia";
+            cooldown = 10 - bohater.Wis;
+        }
+
+        private void checkmbl1(object sender, MouseEventArgs e)
+        {
+            checkitem();
+            itemstats.Text = "Rzut nożem";
+            itemstats2.Text = "zadaje obrażenia z użyciem zręczności";
+            itemstats3.Text = "Blokuje ataki specjalne na: ";
+            itemstats4.Text = 5 - bohater.Wis + " tur";
+        }
+
+        private void checkmbl2(object sender, MouseEventArgs e)
+        {
+            checkitem();
+            itemstats.Text = "Użycie apteczki";
+            itemstats2.Text = "Leczy bohatera z użyciem zręczności";
+            itemstats3.Text = "Blokuje ataki specjalne na: ";
+            itemstats4.Text = 9 - bohater.Wis + " tur";
+        }
+
+        private void checkwis1(object sender, MouseEventArgs e)
+        {
+            checkitem();
+            itemstats.Text = "Magiczny pocisk";
+            itemstats2.Text = "zadaje obrażenia z użyciem inteligencji";
+            itemstats3.Text = "Blokuje ataki specjalne na: ";
+            itemstats4.Text = 5 - bohater.Wis + " tur";
+        }
+
+        private void checkwis2(object sender, MouseEventArgs e)
+        {
+            checkitem();
+            itemstats.Text = "Uzdrowienie";
+            itemstats2.Text = "Leczy bohatera z użyciem inteligencji";
+            itemstats3.Text = "Blokuje ataki specjalne na: ";
+            itemstats4.Text = 9 - bohater.Wis + " tur";
+        }
+
+        private void checkstr1(object sender, MouseEventArgs e)
+        {
+            checkitem();
+            itemstats.Text = "Bardzo silne uderzenie";
+            itemstats2.Text = "zadaje obrażenia z użyciem siły";
+            itemstats3.Text = "Blokuje ataki specjalne na: ";
+            itemstats4.Text = 5 - bohater.Wis + " tur";
+        }
+
+        private void checkstr2(object sender, MouseEventArgs e)
+        {
+            checkitem();
+            itemstats.Text = "Ciało Pudziana";
+            itemstats2.Text = "Leczy bohatera z użyciem SIŁY PUDZIANA";
+            itemstats3.Text = "Blokuje ataki specjalne na: ";
+            itemstats4.Text = 9 - bohater.Wis + " tur";
+        }
     }
 }
