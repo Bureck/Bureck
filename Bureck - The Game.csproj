@@ -249,6 +249,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <Resource Include="zuodziej.png" />
+    <Resource Include="mapalas.png" />
     <Resource Include="spellstr2.png" />
     <Resource Include="spellstr1.png" />
     <Resource Include="spellwis2.png" />

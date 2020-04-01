@@ -44,12 +44,14 @@ namespace Bureck___The_Game
         Osoba Bureck = new Osoba(0);
         Osoba Frycu = new Osoba(1);
         Osoba Wojten = new Osoba(2);
+        Osoba Zuodziej = new Osoba(3);
 
         Random rnd = new Random();
 
         places farmaCheck = new places();
         places ridoCheck = new places();
         places goraCheck = new places();
+        places lasCheck = new places();
 
         equip shopitem = new equip();
         equip item1 = new equip();
@@ -327,6 +329,22 @@ namespace Bureck___The_Game
                     wyswietlacz.Text = "";
                     Wojtentalk();
                     break;
+                case 12:
+                    //WątekFall quest
+                    Wojten.Option += 1;
+                    wyswietlacz.Text = "";
+                    Wojtentalk();
+                    lasCheck.Available = true;
+                    break;
+                case 13:
+                    //zuodziej talk
+                    Zuodziej.Option += 1;
+                    Zuodziejtalk();
+                    break;
+                case 14:
+                    //zuodziej fight
+                    fightstart();
+                    break;
             }
         }
         //==================================================================================CHECK STATE FIGHT=========================================================================================
@@ -365,7 +383,7 @@ namespace Bureck___The_Game
                         komunikat += " Padasz na ziemie nieprzytomny.";
                         wyswietlacz.Text = komunikat;
                         but1 = 2;
-                        fightend();
+                        fightend(false);
                     }
                     else
                         wyswietlacz.Text = komunikat;
@@ -381,7 +399,7 @@ namespace Bureck___The_Game
                 komunikat += " Przeciwnik pada na ziemie nieprzytomny.";
                 wyswietlacz.Text = komunikat;
                 but1 = 1;
-                fightend();
+                fightend(true);
             }
             hpbox.Text = bohater.Hp.ToString();
             cooldown -= 1;
@@ -413,6 +431,8 @@ namespace Bureck___The_Game
                     gora.Visibility = Visibility.Visible;
                     wojten_icon.Visibility = Visibility.Visible;
                     goraFarm.Visibility = Visibility.Visible;
+                    break;
+                case 3:
                     break;
             }
         }
@@ -452,15 +472,19 @@ namespace Bureck___The_Game
                     bandyta.Visibility = Visibility.Visible;
                     break;
                 case 2:
+                    wyswietlacz.Text = "";
                     gora.Visibility = Visibility.Collapsed;
                     wojten_icon.Visibility = Visibility.Collapsed;
                     demongorski.Visibility = Visibility.Visible;
+                    break;
+                case 3:
+                    wyswietlacz.Text = "";
                     break;
             }
             stan.Czynnosc = 1;
         }
 
-        void fightend()
+        void fightend(bool check)
         {
             cooldown = 0;
             switch (who)
@@ -470,13 +494,21 @@ namespace Bureck___The_Game
                     break;
                 case 1:
                     bandyta.Visibility = Visibility.Collapsed;
-                    if (Frycu.Option == 4)
+                    if (Frycu.Option == 4 && check == true)
                         Frycu.Option += 1;
                     break;
                 case 2:
                     demongorski.Visibility = Visibility.Collapsed;
-                    if (Wojten.Option == 7)
+                    if (Wojten.Option == 7 && check == true)
                         Wojten.Option += 1;
+                    break;
+                case 3:
+                    zuodziej.Visibility = Visibility.Collapsed;
+                    if (check == true)
+                    {
+                        Wojten.Option += 1;
+                        lasCheck.Available = false;
+                    }
                     break;
             }
             rozmowa1.Visibility = Visibility.Visible;
@@ -522,6 +554,11 @@ namespace Bureck___The_Game
                     wojten_icon.Visibility = Visibility.Collapsed;
                     wyswietlacz.Text = "...";
                     break;
+                case 3:
+                    zuodziej.Visibility = Visibility.Visible;
+                    talkenemyname.Text = Zuodziej.Name;
+                    wyswietlacz.Text = "...";
+                    break;
             }
         }
 
@@ -555,6 +592,7 @@ namespace Bureck___The_Game
                 mapafarma.Visibility = Visibility.Collapsed;
                 maparido.Visibility = Visibility.Collapsed;
                 mapagora.Visibility = Visibility.Collapsed;
+                mapalas.Visibility = Visibility.Collapsed;
             }
             else
             {
@@ -565,7 +603,8 @@ namespace Bureck___The_Game
                     maparido.Visibility = Visibility.Visible;
                 if (goraCheck.Available == true)
                     mapagora.Visibility = Visibility.Visible;
-                    
+                if (lasCheck.Available == true)
+                    mapalas.Visibility = Visibility.Visible;
             }
         }
         //===================================================================================TALK TO BURECK=================================================================================
@@ -731,23 +770,81 @@ namespace Bureck___The_Game
                 case 8:
                     rozmowa1.Visibility = Visibility.Visible;
                     wyswietlacz.Text = "Udało Ci się. Teraz, gdy osiągniesz 2, oraz 4 punkty jakiejś statystyki dostaniesz specjalną umiejętność. To jak często będziesz mógł jej używać będzie zależeć od Twojej inteligencji. A teraz idź, dokonać zemsty za moje drzewo";
-                    but1 = 11;
+                    but1 = 12;
                     rozmowa1.Text = "niech tak będzie";
                     spells = true;
                     break;
                 case 9:
                     rozmowa1.Visibility = Visibility.Collapsed;
                     break;
+                case 10:
+                    rozmowa1.Visibility = Visibility.Visible;
+                    wyswietlacz.Text = "Czuję od Ciebie zwycięstwo. W nagrodę, w momencie gdy zdobędziesz 8 punktów danej statystyki, przyjdź do mnie a nauczę Cię kolejnych umiejętności";
+                    but1 = 11;
+                    rozmowa1.Text = "Fajność";
+                    break;
+                case 11:
+                    wyswietlacz.Text = "Mam dla Ciebie jeszcze jedno zadanie. Musisz odnaleźć i unieszkodliwiśc Pawła Nosiworka";
+                    but1 = 11;
+                    rozmowa1.Text = "Jak mam tego dokonać?";
+                    break;
+                case 12:
+                    wyswietlacz.Text = "Idź na południe. Znajdziesz tam obóz Tromasha Furthoka. On Ci pomoże";
+                    but1 = 11;
+                    rozmowa1.Text = "No dobra";
+                    break;
+                case 13:
+                    rozmowa1.Visibility = Visibility.Collapsed;
+                    break;
+            }
+        }
+
+        //======================================================================================MINOR TALKS===================================================================================
+
+        void Zuodziejtalk()
+        {
+            switch (Zuodziej.Option)
+            {
+                case 0:
+                    rozmowa1.Visibility = Visibility.Visible;
+                    but1 = 13;
+                    rozmowa1.Text = "Czy to Ty kradniesz ludziom drzewa?";
+                    break;
+                case 1:
+                    rozmowa1.Visibility = Visibility.Visible;
+                    wyswietlacz.Text = "Z technicznego punktu widzenia te drzewa nie posiadają właściciela";
+                    but1 = 13;
+                    rozmowa1.Text = "O kurde, rzeczywiście";
+                    break;
+                case 2:
+                    rozmowa1.Visibility = Visibility.Visible;
+                    wyswietlacz.Text = "Nie po to studiowałem prawo, żebyś mnie tu teraz od złodziei wyzywał";
+                    but1 = 13;
+                    rozmowa1.Text = "Mimo wszystko, muszę Cię jednak pobić";
+                    break;
+                case 3:
+                    rozmowa1.Visibility = Visibility.Visible;
+                    wyswietlacz.Text = "Kto bierze udział w bójce lub pobiciu, w którym naraża się człowieka na bezpośrednie niebezpieczeństwo utraty życia albo spowodowanie uszczerbku na zdrowiu, podlega karze pozbawienia wolności do lat 3";
+                    but1 = 14;
+                    rozmowa1.Text = "Widzisz tu gdzieś policje?";
+                    break;
             }
         }
 
         //=======================================================================================GO TO=======================================================================================
-        private void goToFarma(object sender, MouseButtonEventArgs e)
+
+        void gotothings()
         {
             mapsko.Visibility = Visibility.Collapsed;
             mapafarma.Visibility = Visibility.Collapsed;
             maparido.Visibility = Visibility.Collapsed;
             mapagora.Visibility = Visibility.Collapsed;
+            mapalas.Visibility = Visibility.Collapsed;
+        }
+        
+        private void goToFarma(object sender, MouseButtonEventArgs e)
+        {
+            gotothings();
             switch (stan.Miejsce)
             {
                 case 0:
@@ -769,10 +866,7 @@ namespace Bureck___The_Game
 
         private void goToRido(object sender, MouseButtonEventArgs e)
         {
-            mapsko.Visibility = Visibility.Collapsed;
-            mapafarma.Visibility = Visibility.Collapsed;
-            maparido.Visibility = Visibility.Collapsed;
-            mapagora.Visibility = Visibility.Collapsed;
+            gotothings();
             switch (stan.Miejsce)
             {
                 case 0:
@@ -793,10 +887,7 @@ namespace Bureck___The_Game
 
         private void goToGora(object sender, MouseButtonEventArgs e)
         {
-            mapsko.Visibility = Visibility.Collapsed;
-            mapafarma.Visibility = Visibility.Collapsed;
-            maparido.Visibility = Visibility.Collapsed;
-            mapagora.Visibility = Visibility.Collapsed;
+            gotothings();
             switch (stan.Miejsce)
             {
                 case 0:
@@ -810,10 +901,34 @@ namespace Bureck___The_Game
                     break;
                 case 2:
                     break;
-
             }
             stan.Miejsce = 2;
             checkstateplace();
+        }
+
+        private void goToLas(object sender, MouseButtonEventArgs e)
+        {
+            gotothings();
+            switch (stan.Miejsce)
+            {
+                case 0:
+                    farma.Visibility = Visibility.Collapsed;
+                    bureckbutton.Visibility = Visibility.Collapsed;
+                    break;
+                case 1:
+                    rido.Visibility = Visibility.Collapsed;
+                    Frycubutton.Visibility = Visibility.Collapsed;
+                    ridoFarm.Visibility = Visibility.Collapsed;
+                    break;
+                case 2:
+                    gora.Visibility = Visibility.Collapsed;
+                    wojten_icon.Visibility = Visibility.Collapsed;
+                    goraFarm.Visibility = Visibility.Collapsed;
+                    break;
+            }
+            who = 3;
+            talkstart();
+            Zuodziejtalk();
         }
         //===================================================================================EXP FARMY=======================================================================================
         private void ridofarm(object sender, MouseButtonEventArgs e)
@@ -1731,8 +1846,9 @@ namespace Bureck___The_Game
         private void mblatack(object sender, MouseButtonEventArgs e)
         {
             magicclear();
-            oponent.Hp -= bohater.Mbl*6;
-            komunikat = "Przeciwnik otrzymał " + bohater.Mbl * 6 + " obrażeń!";
+            oponent.Hp -= bohater.Mbl*6+attackbonus;
+            int x = bohater.Mbl * 6 + attackbonus;
+            komunikat = "Przeciwnik otrzymał " + x + " obrażeń!";
             cooldown = 6 - bohater.Wis;
             checkStateFight();
         }
@@ -1750,8 +1866,9 @@ namespace Bureck___The_Game
         private void wisatack(object sender, MouseButtonEventArgs e)
         {
             magicclear();
-            oponent.Hp -= bohater.Wis * 6;
-            komunikat = "Przeciwnik otrzymał " + bohater.Wis * 6 + " obrażeń!";
+            oponent.Hp -= bohater.Wis * 6 + attackbonus;
+            int x = bohater.Wis * 6 + attackbonus;
+            komunikat = "Przeciwnik otrzymał " + x + " obrażeń!";
             cooldown = 6 - bohater.Wis;
             checkStateFight();
         }
@@ -1769,8 +1886,9 @@ namespace Bureck___The_Game
         private void stratack(object sender, MouseButtonEventArgs e)
         {
             magicclear();
-            oponent.Hp -= bohater.Str * 6;
-            komunikat = "Przeciwnik otrzymał " + bohater.Str * 6 + " obrażeń!";
+            oponent.Hp -= bohater.Str * 6 + attackbonus;
+            int x = bohater.Str * 6 + attackbonus;
+            komunikat = "Przeciwnik otrzymał " + x + " obrażeń!";
             cooldown = 6 - bohater.Wis;
             checkStateFight();
         }

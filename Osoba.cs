@@ -25,6 +25,9 @@ namespace Bureck___The_Game
                     case 2:
                         name = "Wojtenfall";
                         break;
+                    case 3:
+                        name = "Złodziej drzew";
+                        break;
                 }
                 option = 0;
             }
