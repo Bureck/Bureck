@@ -80,6 +80,7 @@ namespace Bureck___The_Game
                 this.bonustype = details.bonustype;
                 this.bonus = details.bonus;
                 this.id = details.id;
+                this.exist = true;
             }
 
             public string check()

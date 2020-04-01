@@ -83,6 +83,8 @@
         <Image x:Name="use0" HorizontalAlignment="Left" Height="32" Margin="616,419,0,0" VerticalAlignment="Top" Width="25" Source="mieczused.png" Visibility="Collapsed"/>
         <Image x:Name="use1" HorizontalAlignment="Left" Height="100" Margin="494,394,0,0" VerticalAlignment="Top" Width="100" Source="kolczugaused.png" Visibility="Collapsed"/>
         <Image x:Name="use2" HorizontalAlignment="Left" Height="100" Margin="599,432,0,0" VerticalAlignment="Top" Width="100" Source="kaloszeused.png" Visibility="Collapsed"/>
+        <Image x:Name="use3" HorizontalAlignment="Left" Height="100" Margin="348,322,0,0" VerticalAlignment="Top" Width="100" Source="ramiennikused.png" Visibility="Collapsed"/>
+        <Image x:Name="unuse3" HorizontalAlignment="Left" Height="100" Margin="494,307,0,0" VerticalAlignment="Top" Width="100" Visibility="Collapsed" Source="ramiennik.png"/>
         <Image x:Name="mapagora" HorizontalAlignment="Left" Height="38" Margin="563,27,0,0" VerticalAlignment="Top" Width="53" Source="mapagora.png" MouseDown="goToGora" Visibility="Collapsed"/>
         <Image x:Name="spellmbl1" HorizontalAlignment="Left" Height="78" Margin="599,481,0,0" VerticalAlignment="Top" MouseLeave="stopshop" Width="78" Source="spellmbl1.png" Visibility="Collapsed" MouseDown="mblatack" MouseEnter="checkmbl1"/>
         <Image x:Name="spellmbl2" HorizontalAlignment="Left" Height="78" Margin="704,394,0,0" VerticalAlignment="Top" MouseLeave="stopshop" Width="78" Source="spellmbl2.png" Visibility="Collapsed" MouseDown="mblheal" MouseEnter="checkmbl2"/>
@@ -91,16 +93,8 @@
         <Image x:Name="spellstr1" HorizontalAlignment="Left" Height="78" Margin="696,145,0,0" VerticalAlignment="Top" MouseLeave="stopshop" Width="78" Source="spellstr1.png" Visibility="Collapsed" MouseDown="stratack" MouseEnter="checkstr1"/>
         <Image x:Name="spellstr2" HorizontalAlignment="Left" Height="78" Margin="609,10,0,0" VerticalAlignment="Top" MouseLeave="stopshop" Width="78" Source="spellstr2.png" Visibility="Collapsed" MouseDown="strheal" MouseEnter="checkstr2"/>
         <Image x:Name="mapalas" HorizontalAlignment="Left" Height="25" Margin="525,78,0,0" VerticalAlignment="Top" Width="69" Source="mapalas.png" Visibility="Collapsed" MouseDown="goToLas"/>
-        <Image x:Name="zuodziej" HorizontalAlignment="Left" Height="414" Margin="-3,4,0,0" VerticalAlignment="Top" Width="324" Source="zuodziej.png" RenderTransformOrigin="0.5,0.5" Stretch="UniformToFill" Visibility="Collapsed">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.324"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
+        <Image x:Name="zuodziej" HorizontalAlignment="Left" Height="414" Margin="-3,4,0,0" VerticalAlignment="Top" Width="324" Source="zuodziej.png" RenderTransformOrigin="0.5,0.5" Stretch="UniformToFill" Visibility="Collapsed"/>
+        
 
 
     </Grid>

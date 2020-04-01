@@ -248,7 +248,7 @@ namespace Bureck___The_Game
                         strplus.Visibility = Visibility.Visible;
                         mblplus.Visibility = Visibility.Visible;
                         intplus.Visibility = Visibility.Visible;
-                        wyswietlacz.Text = "Uzyskałeś nowy poziom doświadczenia!";
+                        komunikat = "Uzyskałeś nowy poziom doświadczenia! ";
                     }
                     else
                     {
@@ -256,9 +256,10 @@ namespace Bureck___The_Game
                         xpneed -= bohater.Xp;
                         komunikat = "Do następnego poziomu pozostało ";
                         komunikat += xpneed;
-                        komunikat += " punktów doświadczenia";
-                        wyswietlacz.Text = komunikat;
+                        komunikat += " punktów doświadczenia. ";
                     }
+                    drop(who);
+                    wyswietlacz.Text = komunikat;
                     but1 = 3;
                     break;
                 case 2:
@@ -1181,7 +1182,7 @@ namespace Bureck___The_Game
         //=========================================================================================ITEM SLOT CHECK=============================================================
         bool itemslot(int x)
         {
-             SqlCommand command = new SqlCommand("select nazwa, cena, itemtype, bonustype, bonus, id from Przedmioty where id = " + x, connection);
+            SqlCommand command = new SqlCommand("select nazwa, cena, itemtype, bonustype, bonus, id from Przedmioty where id = " + x, connection);
              SqlDataReader reader = command.ExecuteReader();
 
             reader.Read();
@@ -1276,6 +1277,9 @@ namespace Bureck___The_Game
                 case 2:
                     itemtemple.Source = shop3.Source;
                     break;
+                case 3:
+                    itemtemple.Source = unuse3.Source;
+                    break;
             }
             switch (eqplace)
             {
@@ -1322,6 +1326,9 @@ namespace Bureck___The_Game
                 case 2:
                     itemtemple.Source = use2.Source;
                     break;
+                case 3:
+                    itemtemple.Source = use3.Source;
+                    break;
             }
             switch (eqplace)
             {
@@ -1354,6 +1361,27 @@ namespace Bureck___The_Game
                     break;
             }
         }
+        //===========================================================================================DROP ITEMS=======================================================================================
+        void drop(int x)
+        {
+            
+            int rng = rnd.Next(1, 100);
+            bool succes=false;
+            switch (x)
+            {
+                default:
+                    break;
+                case 3:
+                    if (rng < 50)
+                        succes = itemslot(3);
+                    else
+                        succes = itemslot(2);
+                    break;
+            }
+            if (succes == true)
+                komunikat += "Zdobyto nowy przedmiot!";
+        }
+        
         //===========================================================================================EQUIP OR SELL====================================================================================
         private void equiporsell1(object sender, MouseButtonEventArgs e)
         {

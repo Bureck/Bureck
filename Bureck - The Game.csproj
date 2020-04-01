@@ -249,6 +249,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="ramiennik.png" />
+    <Resource Include="ramiennikused.png" />
     <Resource Include="start gry klick.png" />
     <Resource Include="start gry.png" />
     <Resource Include="bureck the game start.png" />
