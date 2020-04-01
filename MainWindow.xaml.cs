@@ -569,19 +569,20 @@ namespace Bureck___The_Game
             {
                 case 0:
                     Bureckface.Visibility = Visibility.Collapsed;
-                    talkenemyname.Visibility = Visibility.Collapsed;
                     break;
                 case 1:
                     FrycuFace.Visibility = Visibility.Collapsed;
-                    talkenemyname.Visibility = Visibility.Collapsed;
                     if (Frycu.Option < 4)
                         Frycu.Option = 0;
                     break;
                 case 2:
                     wojtenface.Visibility = Visibility.Collapsed;
-                    talkenemyname.Visibility = Visibility.Collapsed;
+                    break;
+                case 3:
+                    zuodziej.Visibility = Visibility.Collapsed;
                     break;
             }
+            talkenemyname.Visibility = Visibility.Collapsed;
             checkstateplace();
         }
         //===================================================================================OPEN MAP========================================================================================
