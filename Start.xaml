@@ -1,0 +1,18 @@
+﻿<Window x:Class="Bureck___The_Game.Start"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bureck___The_Game"
+        mc:Ignorable="d"
+        Title="Start" Height="507" Width="900">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="bureck the game start.png"/>
+        </Grid.Background>
+        <Image x:Name="bezkliku" HorizontalAlignment="Left" Height="100" Margin="183,360,0,0" VerticalAlignment="Top" Width="100" Source="start gry.png" Visibility="Collapsed"/>
+        <Image x:Name="zklikiem" HorizontalAlignment="Left" Height="100" Margin="595,320,0,0" VerticalAlignment="Top" Width="100" Source="start gry klick.png" Visibility="Collapsed"/>
+        <Image x:Name="guzik_start" HorizontalAlignment="Left" Height="42" Margin="183,278,0,0" VerticalAlignment="Top" Width="514" Source="start gry.png" Stretch="None" MouseEnter="getdark" MouseLeave="getback" MouseDown="start"/>
+
+    </Grid>
+</Window>
