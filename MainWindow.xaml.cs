@@ -41,10 +41,12 @@ namespace Bureck___The_Game
         int who;
         int attackbonus=0;
         string komunikat = "start";
+
         Osoba Bureck = new Osoba(0);
         Osoba Frycu = new Osoba(1);
         Osoba Wojten = new Osoba(2);
         Osoba Zuodziej = new Osoba(3);
+        Osoba Kamthot = new Osoba(4);
 
         Random rnd = new Random();
 
@@ -52,6 +54,7 @@ namespace Bureck___The_Game
         places ridoCheck = new places();
         places goraCheck = new places();
         places lasCheck = new places();
+        places obozCheck = new places();
 
         equip shopitem = new equip();
         equip item1 = new equip();
@@ -157,6 +160,8 @@ namespace Bureck___The_Game
                 }
                 atack *= 5;
                 atack += attackbonus;
+                if (atack < 0)
+                    atack = 0;
                 atack -= oponent.Str;
                 atack -= oponent.Armor;
                 komunikat += "Zadałeś przeciwnikowi ";
@@ -328,6 +333,8 @@ namespace Bureck___The_Game
                     //WątekFall część dalsza
                     Wojten.Option += 1;
                     wyswietlacz.Text = "";
+                    if (Wojten.Option == 13)
+                        obozCheck.Available = true;
                     Wojtentalk();
                     break;
                 case 12:
@@ -345,6 +352,14 @@ namespace Bureck___The_Game
                 case 14:
                     //zuodziej fight
                     fightstart();
+                    break;
+                case 15:
+                    //Kamthot pierwsze spotkanie
+                    Kamthot.Option +=1;
+                    if (Kamthot.Option == 5)
+                        koniecgry();
+                    else
+                        Kamthottalk();
                     break;
             }
         }
@@ -377,6 +392,8 @@ namespace Bureck___The_Game
                         atack -= bohater.Str;
                         atack -= bohater.Armor;
                     }
+                    if (atack < 0)
+                        atack = 0;
                     komunikat += atack.ToString();
                     bohater.Hp -= atack;
                     if (bohater.Hp <= 0)
@@ -560,6 +577,11 @@ namespace Bureck___The_Game
                     talkenemyname.Text = Zuodziej.Name;
                     wyswietlacz.Text = "...";
                     break;
+                case 4:
+                    kamthot.Visibility = Visibility.Visible;
+                    talkenemyname.Text = Kamthot.Name;
+                    wyswietlacz.Text = "";
+                    break;
             }
         }
 
@@ -581,6 +603,9 @@ namespace Bureck___The_Game
                 case 3:
                     zuodziej.Visibility = Visibility.Collapsed;
                     break;
+                case 4:
+                    kamthot.Visibility = Visibility.Collapsed;
+                    break;
             }
             talkenemyname.Visibility = Visibility.Collapsed;
             checkstateplace();
@@ -595,6 +620,7 @@ namespace Bureck___The_Game
                 maparido.Visibility = Visibility.Collapsed;
                 mapagora.Visibility = Visibility.Collapsed;
                 mapalas.Visibility = Visibility.Collapsed;
+                mapaoboz.Visibility = Visibility.Collapsed;
             }
             else
             {
@@ -607,6 +633,8 @@ namespace Bureck___The_Game
                     mapagora.Visibility = Visibility.Visible;
                 if (lasCheck.Available == true)
                     mapalas.Visibility = Visibility.Visible;
+                if (obozCheck.Available == true)
+                    mapaoboz.Visibility = Visibility.Visible;
             }
         }
         //===================================================================================TALK TO BURECK=================================================================================
@@ -800,6 +828,48 @@ namespace Bureck___The_Game
                     break;
             }
         }
+        //=====================================================================================TALK TO KAMTHOT================================================================================
+
+        void Kamthottalk()
+        {
+            switch (Kamthot.Option)
+            {
+                case 0:
+                    kamthot.Visibility = Visibility.Collapsed;
+                    talkenemyname.Visibility = Visibility.Collapsed;
+                    rozmowa1.Visibility = Visibility.Visible;
+                    rozmowa3.Visibility = Visibility.Collapsed;
+                    wyswietlacz.Text = "W drodzę do Obozu natrafiłeś na dzwiną postać";
+                    but1 = 15;
+                    rozmowa1.Text = "Kontynuuj";
+                    break;
+                case 1:
+                    kamthot.Visibility = Visibility.Visible;
+                    talkenemyname.Visibility = Visibility.Visible;
+                    wyswietlacz.Text = "Padnij przed moją potęgą";
+                    but1 = 15;
+                    rozmowa1.Text = "Czym Ty jesteś?";
+                    break;
+                case 2:
+                    wyswietlacz.Text = "Nazywam się Kamthot, jestem połączeniem tłuszczu i czystego zła";
+                    but1 = 15;
+                    rozmowa1.Text = "Ale Ty jesteś gruby";
+                    break;
+                case 3:
+                    wyswietlacz.Text = "W rzeczy samej jestem. I mam dla Ciebie przepowiednie. Zginiesz z ręki najbliższej ci osoby";
+                    but1 = 15;
+                    rozmowa1.Text = "Tata mnie uczył, żeby nie słuchać nieznajomych tłustych grubasów";
+                    break;
+                case 4:
+                    kamthot.Visibility = Visibility.Collapsed;
+                    talkenemyname.Visibility = Visibility.Collapsed;
+                    wyswietlacz.Text = "Nagle masa nieopanowenego tłuszczu uderzyła Cię i momentalnie straciłeś przytomność";
+                    but1 = 15;
+                    //w wersji pełnej but1=2;
+                    rozmowa1.Text = "Kontynuuj";
+                    break;
+            }
+        }
 
         //======================================================================================MINOR TALKS===================================================================================
 
@@ -842,6 +912,7 @@ namespace Bureck___The_Game
             maparido.Visibility = Visibility.Collapsed;
             mapagora.Visibility = Visibility.Collapsed;
             mapalas.Visibility = Visibility.Collapsed;
+            mapaoboz.Visibility = Visibility.Collapsed;
         }
         
         private void goToFarma(object sender, MouseButtonEventArgs e)
@@ -931,6 +1002,33 @@ namespace Bureck___The_Game
             who = 3;
             talkstart();
             Zuodziejtalk();
+        }
+        private void goToOboz(object sender, MouseButtonEventArgs e)
+        {
+            if(Kamthot.Option==0)
+            {
+                who = 4;
+                gotothings();
+                switch (stan.Miejsce)
+                {
+                    case 0:
+                        farma.Visibility = Visibility.Collapsed;
+                        bureckbutton.Visibility = Visibility.Collapsed;
+                        break;
+                    case 1:
+                        rido.Visibility = Visibility.Collapsed;
+                        Frycubutton.Visibility = Visibility.Collapsed;
+                        ridoFarm.Visibility = Visibility.Collapsed;
+                        break;
+                    case 2:
+                        gora.Visibility = Visibility.Collapsed;
+                        wojten_icon.Visibility = Visibility.Collapsed;
+                        goraFarm.Visibility = Visibility.Collapsed;
+                        break;
+                }
+                talkstart();
+                Kamthottalk();
+            }
         }
         //===================================================================================EXP FARMY=======================================================================================
         private void ridofarm(object sender, MouseButtonEventArgs e)
@@ -1373,7 +1471,7 @@ namespace Bureck___The_Game
                 default:
                     break;
                 case 3:
-                    if (rng < 50)
+                    if (rng < 90)
                         succes = itemslot(3);
                     else
                         succes = itemslot(2);
@@ -1984,6 +2082,17 @@ namespace Bureck___The_Game
             itemstats2.Text = "Leczy bohatera z użyciem SIŁY PUDZIANA";
             itemstats3.Text = "Blokuje ataki specjalne na: ";
             itemstats4.Text = 9 - bohater.Wis + " tur";
+        }
+
+
+
+
+
+        void koniecgry()
+        {
+            Koniec ende = new Koniec();
+            ende.Show();
+            this.Close();
         }
     }
 }

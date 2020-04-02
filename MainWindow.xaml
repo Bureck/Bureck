@@ -23,8 +23,8 @@
         <TextBlock x:Name="walka1" HorizontalAlignment="Left" Height="45" Margin="366,374,349,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Width="438" Foreground="White" FontSize="20" MouseDown="fight1" Visibility="Collapsed"/>
         <TextBlock x:Name="walka2" HorizontalAlignment="Left" Margin="366,432,349,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="438" Foreground="White" FontSize="20" FontWeight="Normal" MouseDown="fight2" Visibility="Collapsed"/>
         <TextBlock x:Name="walka3" HorizontalAlignment="Left" Margin="366,493,349,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="438" Foreground="White" FontSize="20" FontWeight="Normal" MouseDown="fight3" Visibility="Collapsed"/>
-        <TextBlock x:Name="rozmowa1" HorizontalAlignment="Left" Height="45" Margin="366,374,347,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Width="440" Foreground="White" FontSize="20" MouseDown="talk1" Visibility="Collapsed"/>
-        <TextBlock x:Name="rozmowa2" HorizontalAlignment="Left" Margin="366,432,347,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="440" Foreground="White" FontSize="20" FontWeight="Normal" MouseDown="talk2" Visibility="Collapsed"/>
+        <TextBlock x:Name="rozmowa1" HorizontalAlignment="Left" Height="58" Margin="366,374,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Width="440" Foreground="White" FontSize="20" MouseDown="talk1" Visibility="Collapsed"/>
+        <TextBlock x:Name="rozmowa2" HorizontalAlignment="Left" Margin="366,432,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="61" Width="440" Foreground="White" FontSize="20" FontWeight="Normal" MouseDown="talk2" Visibility="Collapsed"/>
         <TextBlock x:Name="rozmowa3" HorizontalAlignment="Left" Margin="366,493,347,0" Text="Żegnam." TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="440" Foreground="White" FontSize="20" FontWeight="Normal" MouseDown="talk3" Visibility="Collapsed"/>
         <TextBlock x:Name="talkenemyname" HorizontalAlignment="Left" Margin="4,454,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="99" Width="313" Foreground="White" FontSize="36" FontWeight="Bold" RenderTransformOrigin="0.355,0.512" TextAlignment="Center" Visibility="Collapsed"/>
         <Image x:Name="magic" HorizontalAlignment="Left" Height="612" Margin="348,0,0,0" VerticalAlignment="Top" Width="462" Source="czary.png" Stretch="UniformToFill" Visibility="Collapsed" />
@@ -94,7 +94,9 @@
         <Image x:Name="spellstr2" HorizontalAlignment="Left" Height="78" Margin="609,10,0,0" VerticalAlignment="Top" MouseLeave="stopshop" Width="78" Source="spellstr2.png" Visibility="Collapsed" MouseDown="strheal" MouseEnter="checkstr2"/>
         <Image x:Name="mapalas" HorizontalAlignment="Left" Height="25" Margin="525,78,0,0" VerticalAlignment="Top" Width="69" Source="mapalas.png" Visibility="Collapsed" MouseDown="goToLas"/>
         <Image x:Name="zuodziej" HorizontalAlignment="Left" Height="414" Margin="-3,4,0,0" VerticalAlignment="Top" Width="324" Source="zuodziej.png" RenderTransformOrigin="0.5,0.5" Stretch="UniformToFill" Visibility="Collapsed"/>
-        
+        <Image x:Name="kamthot" HorizontalAlignment="Left" Height="418" Margin="-3,1,0,0" VerticalAlignment="Top" Width="326" Source="kamthot.png" Visibility="Collapsed"/>
+        <Image x:Name="mapaoboz" HorizontalAlignment="Left" Height="39" Margin="563,112,0,0" VerticalAlignment="Top" Width="54" Source="mapaoboz.png" MouseDown="goToOboz" Visibility="Collapsed"/>
+
 
 
     </Grid>

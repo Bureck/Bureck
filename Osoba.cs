@@ -28,6 +28,9 @@ namespace Bureck___The_Game
                     case 3:
                         name = "Złodziej drzew";
                         break;
+                    case 4:
+                        name = "Kamthot";
+                        break;
                 }
                 option = 0;
             }

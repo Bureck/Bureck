@@ -70,9 +70,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Koniec.xaml.cs">
+      <DependentUpon>Koniec.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Start.xaml.cs">
       <DependentUpon>Start.xaml</DependentUpon>
     </Compile>
+    <Page Include="Koniec.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -249,6 +256,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="mapaoboz.png" />
+    <Resource Include="kamthot.png" />
     <Resource Include="ramiennik.png" />
     <Resource Include="ramiennikused.png" />
     <Resource Include="start gry klick.png" />

@@ -1,0 +1,16 @@
+﻿<Window x:Class="Bureck___The_Game.Koniec"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bureck___The_Game"
+        mc:Ignorable="d"
+        Title="Koniec" Height="507" Width="900">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="bureck the game start.png"/>
+        </Grid.Background>
+        <Image HorizontalAlignment="Left" Height="208" Margin="264,59,0,0" VerticalAlignment="Top" Width="380" Source="black.png" Stretch="UniformToFill"/>
+        <TextBlock x:Name="NapisyKońcowe" HorizontalAlignment="Left" Height="366" Margin="282,100,0,0" TextWrapping="Wrap" Text="Kim jest Kamthot? Czy naszemu bohaterowi uda się odnaleźć Pawła Nosiworka? Czy Łysość Fryca jest nieskończona? Co o tym wszystkim powie nam Tromash? Czy ktoś zna odpowiedzi na te pytania? Odpowiedź brzmi nie wiem i wy też się nie dowiecie jak nie kupicie pełnej wersji gry" VerticalAlignment="Top" Width="392" FontWeight="Bold" Foreground="White" FontSize="22"/>
+    </Grid>
+</Window>
