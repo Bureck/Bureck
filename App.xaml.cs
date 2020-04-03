@@ -13,5 +13,6 @@ namespace Bureck___The_Game
     /// </summary>
     public partial class App : Application
     {
+        
     }
 }

@@ -1282,7 +1282,7 @@ namespace Bureck___The_Game
         bool itemslot(int x)
         {
             SqlCommand command = new SqlCommand("select nazwa, cena, itemtype, bonustype, bonus, id from Przedmioty where id = " + x, connection);
-             SqlDataReader reader = command.ExecuteReader();
+            SqlDataReader reader = command.ExecuteReader();
 
             reader.Read();
             equip.details equipDetails = new equip.details(reader.GetValue(0).ToString(), Convert.ToInt32(reader.GetValue(1)), Convert.ToInt32(reader.GetValue(2)), Convert.ToInt32(reader.GetValue(3)), Convert.ToInt32(reader.GetValue(4)), Convert.ToInt32(reader.GetValue(5)));
