@@ -25,6 +25,9 @@ namespace Bureck___The_Game
 
         SqlConnection connection;
 
+        System.Media.SoundPlayer ch = new System.Media.SoundPlayer("chill.wav");
+        System.Media.SoundPlayer fh = new System.Media.SoundPlayer("fight.wav");
+
         hero bohater = new hero();
         hero oponent = new hero();
 
@@ -457,6 +460,8 @@ namespace Bureck___The_Game
         //==================================================================================FIGHT START I END===================================================================================
         void fightstart()
         {
+            ch.Stop();
+            fh.PlayLooping();
             SqlCommand command = new SqlCommand("select name, str, mbl, wis, hp, armor, xp from Przeciwnicy where id = " + who, connection);
             SqlDataReader reader = command.ExecuteReader();
 
@@ -504,6 +509,8 @@ namespace Bureck___The_Game
 
         void fightend(bool check)
         {
+            fh.Stop();
+            ch.PlayLooping();
             cooldown = 0;
             switch (who)
             {
